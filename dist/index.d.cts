@@ -1,4 +1,4 @@
-interface Events extends Veatla.Events {
+interface Events extends VeatlaEvents {
     [key: string]: (...args: any[]) => void;
 }
 type EventsTypes = keyof Events;

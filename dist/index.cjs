@@ -2,16 +2,16 @@
 
 const addAppEventListener = function(type, func) {
   var _a;
-  if (!window.VeatlaEvents.listeners[type])
-    window.VeatlaEvents.listeners[type] = /* @__PURE__ */ new Set();
-  (_a = window.VeatlaEvents.listeners[type]) == null ? void 0 : _a.add(func);
+  if (!window.veatla.listeners[type])
+    window.veatla.listeners[type] = /* @__PURE__ */ new Set();
+  (_a = window.veatla.listeners[type]) == null ? void 0 : _a.add(func);
   return () => {
     var _a2;
-    (_a2 = window.VeatlaEvents.listeners[type]) == null ? void 0 : _a2.delete(func);
+    (_a2 = window.veatla.listeners[type]) == null ? void 0 : _a2.delete(func);
   };
 };
 const dispatchAppEvent = function(type, ...data) {
-  const dispatch = window.VeatlaEvents.listeners[type];
+  const dispatch = window.veatla.listeners[type];
   if (dispatch && dispatch.size > 0) {
     for (const func of Array.from(dispatch)) {
       try {
@@ -23,8 +23,8 @@ const dispatchAppEvent = function(type, ...data) {
   }
 };
 if (typeof window !== "undefined") {
-  if (!window.VeatlaEvents) {
-    window.VeatlaEvents = {
+  if (!window.veatla) {
+    window.veatla = {
       emit: dispatchAppEvent,
       on: addAppEventListener,
       listeners: {}
