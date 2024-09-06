@@ -1,6 +1,8 @@
 import { useEffect } from "react";
-import { addAppEventListener } from "./index";
+import { addAppEventListener, EventsTypes, EventsTypesFuncs } from "./index";
 
-export const useAppEventListener = (
-    ...args: Parameters<typeof addAppEventListener>
-) => useEffect(() => addAppEventListener(...args), []);
+export const useAppEventListener = <T extends EventsTypes>(
+  type: T,
+  func: EventsTypesFuncs[T],
+  dependencies: React.DependencyList
+) => useEffect(() => addAppEventListener(type, func), [...dependencies]);

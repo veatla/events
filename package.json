@@ -1,6 +1,6 @@
 {
   "name": "@veatla/events",
-  "version": "0.0.13",
+  "version": "0.0.14",
   "type": "module",
   "main": "./dist/index.cjs",
   "module": "./dist/index.mjs",
@@ -22,6 +22,11 @@
       "main": "./dist/index.cjs",
       "module": "./dist/index.mjs",
       "types": "./dist/index.d.cts"
+    },
+    "./react": {
+      "main": "./dist/react.cjs",
+      "module": "./dist/react.mjs",
+      "types": "./dist/react.d.cts"
     }
   },
   "scripts": {

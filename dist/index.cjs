@@ -2,8 +2,7 @@
 
 const addAppEventListener = function(type, func) {
   var _a;
-  if (!window.veatla.listeners[type])
-    window.veatla.listeners[type] = /* @__PURE__ */ new Set();
+  if (!window.veatla.listeners[type]) window.veatla.listeners[type] = /* @__PURE__ */ new Set();
   (_a = window.veatla.listeners[type]) == null ? void 0 : _a.add(func);
   return () => {
     var _a2;
@@ -23,13 +22,11 @@ const dispatchAppEvent = function(type, ...data) {
   }
 };
 if (typeof window !== "undefined") {
-  if (!window.veatla) {
-    window.veatla = {
-      emit: dispatchAppEvent,
-      on: addAppEventListener,
-      listeners: {}
-    };
-  }
+  window.veatla = {
+    emit: dispatchAppEvent,
+    on: addAppEventListener,
+    listeners: {}
+  };
 }
 
 exports.addAppEventListener = addAppEventListener;
