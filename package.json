@@ -1,0 +1,38 @@
+{
+  "name": "@veatla/events",
+  "version": "0.0.12",
+  "type": "module",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.cts",
+  "homepage": "https://github.com/veatla/utils",
+  "author": {
+   "name": "Altaev N.",
+   "email": "ksixen@gmail.com",
+   "url": "https://github.com/veatla"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "files": [
+    "./dist"
+  ],
+  "exports": {
+    ".": {
+      "main": "./dist/index.cjs",
+      "module": "./dist/index.mjs",
+      "types": "./dist/index.d.cts"
+    }
+  },
+  "scripts": {
+    "build": "pkgroll"
+  },
+  "devDependencies": {
+    "pkgroll": "^2.4.2",
+    "typescript": "^5.5.4"
+  },
+  "optionalDependencies": {
+    "@types/react": "^18.3.3",
+    "react": "^18.3.1"
+  }
+}
