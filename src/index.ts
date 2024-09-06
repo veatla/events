@@ -1,4 +1,4 @@
-interface Events extends Veatla.Events {
+interface Events extends VeatlaEvents {
   [key: string]: (...args: any[]) => void;
 }
 type EventsTypes = keyof Events;
@@ -8,13 +8,13 @@ export const addAppEventListener = function <T extends EventsTypes>(
   type: T,
   func: EventsTypesFuncs[T]
 ) {
-  if (!window.VeatlaEvents.listeners[type])
-    window.VeatlaEvents.listeners[type] = new Set();
+  if (!window.veatla.listeners[type])
+    window.veatla.listeners[type] = new Set();
 
-  window.VeatlaEvents.listeners[type]?.add(func);
+  window.veatla.listeners[type]?.add(func);
 
   return () => {
-    window.VeatlaEvents.listeners[type]?.delete(func);
+    window.veatla.listeners[type]?.delete(func);
   };
 };
 
@@ -22,7 +22,7 @@ export const dispatchAppEvent = function <T extends EventsTypes>(
   type: T,
   ...data: Parameters<EventsTypesFuncs[T]>
 ) {
-  const dispatch = window.VeatlaEvents.listeners[type];
+  const dispatch = window.veatla.listeners[type];
   if (dispatch && dispatch.size > 0) {
     for (const func of Array.from(dispatch)) {
       try {
@@ -34,8 +34,8 @@ export const dispatchAppEvent = function <T extends EventsTypes>(
   }
 };
 if (typeof window !== "undefined") {
-  if (!window.VeatlaEvents) {
-    window.VeatlaEvents = {
+  if (!window.veatla) {
+    window.veatla = {
       emit: dispatchAppEvent,
       on: addAppEventListener,
       listeners: {},

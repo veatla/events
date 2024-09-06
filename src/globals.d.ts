@@ -1,9 +1,7 @@
 declare global {
-  namespace Veatla {
-    export interface Events {}
-  }
+  export interface VeatlaEvents {}
   export interface Window {
-    VeatlaEvents: {
+    veatla: {
       listeners: {
         [K in EventsTypes]?: Set<EventsTypesFuncs[K]>
       };
