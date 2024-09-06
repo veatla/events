@@ -1,6 +1,7 @@
 const addAppEventListener = function(type, func) {
   var _a;
-  if (!window.VeatlaEvents.listeners[type]) window.VeatlaEvents.listeners[type] = /* @__PURE__ */ new Set();
+  if (!window.VeatlaEvents.listeners[type])
+    window.VeatlaEvents.listeners[type] = /* @__PURE__ */ new Set();
   (_a = window.VeatlaEvents.listeners[type]) == null ? void 0 : _a.add(func);
   return () => {
     var _a2;
